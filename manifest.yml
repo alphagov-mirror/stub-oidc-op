@@ -1,0 +1,13 @@
+---
+applications:
+  - name: stub-oidc-op
+    memory: 1G
+    buildpacks:
+      - java_buildpack
+    command: (cd stub-oidc-op && ls -l &&  bin/stub-oidc-op server ./stub-oidc-op.yml)
+    env:
+      JAVA_HOME: "../.java-buildpack/open_jdk_jre"
+      REDIS_URI: redis-service
+      APPLICATION_PORT: 8080
+    services:
+      - redis-service
